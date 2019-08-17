@@ -68,6 +68,7 @@ a {
 
 section {
   padding: 100px 32px;
+  position: relative;
 }
 
 footer {
