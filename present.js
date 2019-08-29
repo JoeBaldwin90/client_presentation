@@ -1,3 +1,4 @@
+const loadingTag = document.querySelector("header p.loading")// Loading message
 const filesApi = "https://api.figma.com/v1/files/"          // Files endpoint
 const imagesApi = "https://api.figma.com/v1/images/"        // Images endpoint
 const project = "Rc9MpQo5whSUaAJV8ifwW6KU"                  // Figma project ID
@@ -59,5 +60,12 @@ const addImagesToSite = function(urls) {
 }
 
 loadFile(project)                                // Load file from chosen project
-  .then(ids => loadImages(ids))                  // Handle image URLs from API data
+  .then(file => {                                // Change loading message
+      loadingTag.innerHTML = "Generating images..."
+    return file                                  // Data is unchanged
+  })
+  .then(file => loadImages(file))                // Handle image URLs from API data
   .then(imageUrls => addImagesToSite(imageUrls)) // Add each item in image URL array to site
+  .then(function() {                             // Remove loading message
+    loadingTag.innerHTML = ""
+  })
