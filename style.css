@@ -25,8 +25,8 @@ img {
   max-width: 100%;
   height: auto;
 }
-/* ----- ----- ----- */
 
+/* ----- ----- ----- */
 body {
   font-family: "inter ui";
   font-size: 24px;
@@ -69,6 +69,9 @@ a {
 section {
   padding: 100px 32px;
   position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 32px;
 }
 
 footer {
