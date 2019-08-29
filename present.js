@@ -26,6 +26,7 @@ const loadFile = function(key) {
       // Return a new object
       return {
         key: key,
+        title: data.name,
         ids: ids  // This value is an array of frame IDs returned by map
       }
     })
@@ -59,13 +60,10 @@ const addImagesToSite = function(urls) {
   })
 }
 
-loadFile(project)                                // Load file from chosen project
+loadFile(project)                                // Load files from chosen project, return a new object
   .then(file => {                                // Change loading message
-      loadingTag.innerHTML = "Generating images..."
+      loadingTag.innerHTML = file.title
     return file                                  // Data is unchanged
   })
   .then(file => loadImages(file))                // Handle image URLs from API data
   .then(imageUrls => addImagesToSite(imageUrls)) // Add each item in image URL array to site
-  .then(function() {                             // Remove loading message
-    loadingTag.innerHTML = ""
-  })
