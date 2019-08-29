@@ -69,9 +69,26 @@ a {
 section {
   padding: 100px 32px;
   position: relative;
-  display: grid;
+  overflow: hidden;
+
+  /* display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 32px;
+  grid-gap: 32px; */
+}
+
+.slider {
+  display: flex;
+  height: 100vh;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.slider div {
+  padding: 100px 32px;
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
 }
 
 footer {

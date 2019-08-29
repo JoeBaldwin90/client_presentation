@@ -47,12 +47,12 @@ const loadImages = function(object) {
 }
 
 const addImagesToSite = function(urls) {
-  const sectionTag = document.querySelector("section")
-  sectionTag.innerHTML = ""
+  const sliderTag = document.querySelector("div.slider")
+  sliderTag.innerHTML = ""
 
   // Add urls from loadImages into an image tag to display on the screen
   urls.forEach(url => {
-    sectionTag.innerHTML = sectionTag.innerHTML + `
+    sliderTag.innerHTML = sliderTag.innerHTML + `
       <div>
         <img src="${url}">
       </div>
