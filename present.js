@@ -63,6 +63,7 @@ const addImagesToSite = function(urls) {
 loadFile(project)                                // Load files from chosen project, return a new object
   .then(file => {                                // Change loading message
       loadingTag.innerHTML = file.title
+      document.title = file.title + " - Present"
     return file                                  // Data is unchanged
   })
   .then(file => loadImages(file))                // Handle image URLs from API data
