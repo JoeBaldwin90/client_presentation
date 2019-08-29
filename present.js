@@ -1,3 +1,10 @@
+const nextSlide = document.querySelector("a.next")
+const prevSlide = document.querySelector("a.previous")
+const sliderTag = document.querySelector("div.slider")
+const stepsTag = document.querySelector("span.steps")
+let currentSlide = 0
+let totalSlides = 0
+
 const loadingTag = document.querySelector("header p.loading")// Loading message
 const filesApi = "https://api.figma.com/v1/files/"          // Files endpoint
 const imagesApi = "https://api.figma.com/v1/images/"        // Images endpoint
@@ -36,7 +43,7 @@ const loadImages = function(object) {
   const key = object.key           // Project key
   const ids = object.ids.join(",") // Seperate array items with comma for endpoint query
 
-  return fetch(imagesApi + key + "?ids=" + ids + "&scale=0.75", apiHeaders)
+  return fetch(imagesApi + key + "?ids=" + ids + "&scale=1", apiHeaders)
     .then(response => response.json())
     .then(data => {
       return object.ids.map(id => {
@@ -47,8 +54,9 @@ const loadImages = function(object) {
 }
 
 const addImagesToSite = function(urls) {
-  const sliderTag = document.querySelector("div.slider")
   sliderTag.innerHTML = ""
+  totalSlides = urls.length
+  stepsTag.innerHTML = `1 / ${totalSlides}`
 
   // Add urls from loadImages into an image tag to display on the screen
   urls.forEach(url => {
@@ -68,3 +76,35 @@ loadFile(project)                                // Load files from chosen proje
   })
   .then(file => loadImages(file))                // Handle image URLs from API data
   .then(imageUrls => addImagesToSite(imageUrls)) // Add each item in image URL array to site
+
+
+// Slideshow events
+
+const next = function() {
+  currentSlide = currentSlide + 1
+  if (currentSlide >= totalSlides) {
+    currentSlide = 0
+  }
+  moveSlider()
+}
+
+const previous = function() {
+  currentSlide = currentSlide - 1
+  if (currentSlide < 0) {
+    currentSlide = totalSlides - 1
+  }
+  moveSlider()
+}
+
+const moveSlider = function() {
+  sliderTag.style.transform = `translateX(${currentSlide * -100}vw)`
+  stepsTag.innerHTML = `${currentSlide + 1} / ${totalSlides}`
+}
+
+nextSlide.addEventListener("click", function() {
+  next()
+})
+
+prevSlide.addEventListener("click", function() {
+  previous()
+})
