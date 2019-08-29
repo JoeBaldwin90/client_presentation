@@ -32,7 +32,8 @@ I achieved this by:
 - Converting the array of ID's into a string joined with a comma.
 - Manipulating the endpoint using the string of frame IDs.
 - Accessing the frame image URLs based on their IDs: `data.images[id]`.
-- For reference, the response looked like this: ```
+- For reference, the response looked like this: 
+```
 {
     "err": null,
     "images": {
