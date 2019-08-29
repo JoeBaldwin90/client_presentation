@@ -31,10 +31,15 @@ const loadFile = function(key) {
       const ids = data.document.children[0].children.map(frame => {
         return frame.id
       })
+      // Get the frame names from the project
+      const names = data.document.children[0].children.map(frame => {
+        return frame.name
+      })
       // Return a new object
       return {
         key: key,
         title: data.name,
+        names: names,
         ids: ids  // This value is an array of frame IDs returned by map
       }
     })
