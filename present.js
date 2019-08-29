@@ -2,6 +2,7 @@ const nextSlide = document.querySelector("a.next")
 const prevSlide = document.querySelector("a.previous")
 const sliderTag = document.querySelector("div.slider")
 const stepsTag = document.querySelector("span.steps")
+const footerTag = document.querySelector("footer")
 let currentSlide = 0
 let totalSlides = 0
 
@@ -57,6 +58,7 @@ const addImagesToSite = function(urls) {
   sliderTag.innerHTML = ""
   totalSlides = urls.length
   stepsTag.innerHTML = `1 / ${totalSlides}`
+  footerTag.classList.add("show")
 
   // Add urls from loadImages into an image tag to display on the screen
   urls.forEach(url => {
