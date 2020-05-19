@@ -1,5 +1,6 @@
-# Present
-This application enables web designers to present a live version of a Figma project to clients in a slideshow format.
+# Figma Client Presentation Tool
+This application enables web designers to present a live version of a Figma project to clients in a slideshow format. 
+[View the live site](figma-client-presentation.surge.sh)
 
 ## Intention
 Integrate with the Figma API and display all the images/content contained within the project frames.  
@@ -11,7 +12,7 @@ Integrate with the Figma API and display all the images/content contained within
 - HTML / CSS
 - Javascript
 - AJAX
-- [Postman](https://www.getpostman.com/) (API development tool)
+- [Postman](https://www.getpostman.com/)
 
 ## Process
 The bulk of the work for this project was in picking apart the Figma's API documentation and testing various endpoints with Postman to figure out how to pigeonhole the data that I wanted to display and manipulate it into a useable form.  
